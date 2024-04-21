@@ -9,7 +9,7 @@ public class Employees {
 
     //Getter and setter
     //Including a null case
-    public List<Employee> getEmployees(){
+    public List<Employee> getEmployeeList(){
         if(this.employees == null){
             this.employees = new ArrayList<Employee>();
         }

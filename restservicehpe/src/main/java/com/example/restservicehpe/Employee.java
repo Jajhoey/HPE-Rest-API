@@ -41,7 +41,7 @@ public class Employee {
         this.fname = fname;
     }
 
-    public void setId(String lname){
+    public void setLastName(String lname){
         this.lname = lname;
     }
 
