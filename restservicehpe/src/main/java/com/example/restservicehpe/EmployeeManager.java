@@ -14,21 +14,24 @@ public class EmployeeManager {
                 1, 
                 "John",
                 "Wick",
-                "mydoggone@gmail.com"));
+                "mydoggone@gmail.com",
+                "Dr."));
 
         employeeList.getEmployeeList().add(
             new Employee(
                 2, 
                 "James",
                 "Murray",
-                "tonightsbiggestloser@gmail.com"));
+                "tonightsbiggestloser@gmail.com",
+                "Colonel"));
         
         employeeList.getEmployeeList().add(
             new Employee(
                 3, 
                 "Adam",
                 "Eve",
-                "godissocool@gmail.com"));
+                "godissocool@gmail.com",
+                "Pastor"));
     }
 
     public Employees getEmployees(){
