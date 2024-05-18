@@ -1,8 +1,14 @@
 package com.example.restservicehpe;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.restservicehpe.repository.EmployeeManager;
+import com.example.restservicehpe.services.Employees;
+import com.example.restservicehpe.entity.Employee;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,24 +18,27 @@ import java.net.URI;
 
 @RestController
 public class Controller {
-    @Autowired
-    private EmployeeManager employeeMananger;
+    private final Employees employees;
 
+    public Controller(Employees employees){
+        this.employees = employees;
+    }
     //GET Method
     @GetMapping(path = "/employees", produces = "application/json")
-    public Employees getEmployeeList() {
-        return employeeMananger.getEmployees();
+    public ResponseEntity<List<Employee>> getAllEmployees(){
+        return ResponseEntity.ok(employees.getEmployeeList());
     }
+    
     
     @PostMapping(path = "/employees", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> addEmployee(@RequestBody Employee employee){
 
         //Use the num of total employees to create the new employee's id
-        int id = employeeMananger.getEmployees().getEmployeeList().size();
+        long id = employees.getEmployeeList().size();
         id++;
 
         employee.setId(id);
-        employeeMananger.addEmployee(employee);
+        employees.save(employee);
 
         URI location = ServletUriComponentsBuilder
             .fromCurrentRequest()

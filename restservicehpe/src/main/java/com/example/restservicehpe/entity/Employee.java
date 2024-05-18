@@ -1,7 +1,7 @@
-package com.example.restservicehpe;
+package com.example.restservicehpe.entity;
 
 public class Employee {
-    private int id;
+    private long id;
     private String fname;
     private String lname;
     private String email;
@@ -9,7 +9,7 @@ public class Employee {
     
     public Employee(){}
 
-    public Employee(int id, String fname, String lname, String email, String title){
+    public Employee(long id, String fname, String lname, String email, String title){
         this.id = id;
         this.fname = fname;
         this.lname = lname;
@@ -18,7 +18,7 @@ public class Employee {
     }
 
     //Get methods for employee object
-    public int getId(){
+    public long getId(){
         return id;
     }
 
@@ -39,7 +39,7 @@ public class Employee {
     }
 
     //Setter methods
-    public void setId(int id){
+    public void setId(long id){
         this.id = id;
     }
 
