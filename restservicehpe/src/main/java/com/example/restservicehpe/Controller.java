@@ -22,7 +22,7 @@ public class Controller {
     
     public Controller(EmployeeService e){
         this.employees = e;
-        e.save(
+        employees.save(
             new Employee(
                 1,
                 "John",
