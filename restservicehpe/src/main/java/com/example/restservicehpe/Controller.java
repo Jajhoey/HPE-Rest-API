@@ -1,11 +1,9 @@
 package com.example.restservicehpe;
 
-import java.util.List;
-
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.restservicehpe.services.Employees;
+import com.example.restservicehpe.services.EmployeeService;
 import com.example.restservicehpe.entity.Employee;
 
 
@@ -13,17 +11,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import java.net.URI;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+import java.net.URI;
 
 @RestController
 public class Controller {
-    private final Employees employees;
+    private final EmployeeService employees;
     
-    public Controller(Employees e){
+    public Controller(EmployeeService e){
         this.employees = e;
+        e.save(
+            new Employee(
+                1,
+                "John",
+                "Wick",
+                "mydoggone@gmail.com",
+                "Dr."));
     }
 
     //GET Methods
@@ -31,11 +36,16 @@ public class Controller {
     public ResponseEntity<List<Employee>> getAllEmployees(){
         return ResponseEntity.ok(employees.getEmployeeList());
     }
-
+    
     @GetMapping(path = "/employees", produces = "application/json")
     public List<Employee> getAllEmployees(@RequestParam String param) {
         return employees.getEmployeeList();
-    }
+    } 
+    /**
+    @GetMapping(path = "/employees", produces = "application/json")
+    public String testing(@RequestParam String param) {
+        return "Default";
+    }*/
     
     
     
