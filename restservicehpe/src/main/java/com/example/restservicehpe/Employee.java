@@ -1,4 +1,4 @@
-package com.example.restservicehpe.entity;
+package com.example.restservicehpe;
 
 public class Employee {
     private long id;

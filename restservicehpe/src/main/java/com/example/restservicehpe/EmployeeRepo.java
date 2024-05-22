@@ -1,8 +1,9 @@
-package com.example.restservicehpe.repository;
-
-import com.example.restservicehpe.entity.Employee;
+package com.example.restservicehpe;
 
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
@@ -10,6 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Long>{
     
+    public List<Employee> getAllEmployees();
 
     /**
     employees.save(

@@ -3,10 +3,6 @@ package com.example.restservicehpe;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.restservicehpe.services.EmployeeService;
-import com.example.restservicehpe.entity.Employee;
-
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,13 +18,7 @@ public class Controller {
     
     public Controller(EmployeeService e){
         this.employees = e;
-        employees.save(
-            new Employee(
-                1,
-                "John",
-                "Wick",
-                "mydoggone@gmail.com",
-                "Dr."));
+        
     }
 
     //GET Methods

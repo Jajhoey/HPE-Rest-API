@@ -1,7 +1,5 @@
-package com.example.restservicehpe.services;
+package com.example.restservicehpe;
 
-import com.example.restservicehpe.repository.EmployeeRepo;
-import com.example.restservicehpe.entity.Employee;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -18,8 +16,13 @@ public class EmployeeService {
     //Getter and setter
     //Including a null case
     public List<Employee> getEmployeeList(){
-        System.out.println(employeeRepo.findAll());
-
+        employeeRepo.save(
+            new Employee(
+                1,
+                "John",
+                "Wick",
+                "mydoggone@gmail.com",
+                "Dr."));
         return this.employeeRepo.findAll();
     }
 
