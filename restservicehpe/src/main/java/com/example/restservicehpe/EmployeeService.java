@@ -16,13 +16,6 @@ public class EmployeeService {
     //Getter and setter
     //Including a null case
     public List<Employee> getEmployeeList(){
-        employeeRepo.save(
-            new Employee(
-                1,
-                "John",
-                "Wick",
-                "mydoggone@gmail.com",
-                "Dr."));
         return this.employeeRepo.findAll();
     }
 
