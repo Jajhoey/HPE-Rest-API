@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-import java.util.List;
 import java.net.URI;
 
 @RestController
@@ -23,12 +21,12 @@ public class Controller {
     //GET Methods
      
     @GetMapping(path = "/employees", produces = "application/json")
-    public ResponseEntity<List<Employee>> getAllEmployees(){
+    public ResponseEntity<Iterable<Employee>> getAllEmployees(){
         return ResponseEntity.ok(employeeService.getEmployeeList());
     }
     
     @GetMapping(path = "/employees", produces = "application/json")
-    public List<Employee> getAllEmployees(@RequestParam String param) {
+    public Iterable<Employee> getAllEmployees(@RequestParam String param) {
         return employeeService.getEmployeeList();
     } 
     
@@ -36,12 +34,12 @@ public class Controller {
     public String testing(@RequestParam String param) {
         return "Default";
     }
-    
+
     @PostMapping(path = "/employees", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> addEmployee(@RequestBody Employee employee){
 
         //Use the num of total employees to create the new employee's id
-        long id = employeeService.getEmployeeList().size();
+        long id = employeeService.count();
         id++;
 
         employee.setId(id);
@@ -54,7 +52,7 @@ public class Controller {
             .toUri();
         
         return ResponseEntity.created(location).build();
-
+        
 
     }
     
